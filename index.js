@@ -1,17 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import { Auth0Provider } from '@auth0/auth0-react';
+const display = document.getElementById("display");
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Auth0Provider
-    domain="dev-kf6wmf1t71foiwgp.us.auth0.com"
-    clientId="KSg5jtAzXhVqMhs0FzgW1AENqIxgfWv9"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-  >
-    <App />
-    </Auth0Provider>
-);
+function appendToDisplay(input){
+    display.value += input;
+}
+
+function clearDisplay(){
+    display.value = "";
+}
+
+function calculate(){
+    try{
+        display.value = eval(display.value);
+    }
+    catch(error){
+        display.value = "Error";
+    }
+}
